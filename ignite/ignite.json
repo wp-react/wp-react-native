@@ -1,0 +1,15 @@
+{
+  "createdWith": "2.0.0",
+  "examples": "classic",
+  "navigation": "react-navigation",
+  "askToOverwrite": true,
+  "generators": {
+    "component": "ignite-expo",
+    "container": "ignite-expo",
+    "listview": "ignite-expo",
+    "list": "ignite-expo",
+    "redux": "ignite-expo",
+    "saga": "ignite-expo",
+    "screen": "ignite-expo"
+  }
+}
