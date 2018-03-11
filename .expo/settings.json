@@ -1,7 +1,9 @@
 {
+  "urlRandomness": "4q-3w5",
   "hostType": "tunnel",
   "lanType": "ip",
   "dev": true,
+  "strict": false,
   "minify": false,
-  "urlRandomness": null
+  "urlType": "exp"
 }

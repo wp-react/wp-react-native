@@ -3,7 +3,7 @@
   "displayName": "WpReactNative",
   "expo": {
     "name": "WpReactNative",
-    "description": "No description",
+    "description": "WordPress React-Native",
     "slug": "WpReactNative",
     "privacy": "public",
     "sdkVersion": "25.0.0",

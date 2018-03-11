@@ -2,12 +2,14 @@ import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import configureStore from './CreateStore'
 import rootSaga from '../Sagas/'
+import { WordpressRedux } from 'wp-react-core'
 import ReduxPersist from '../Config/ReduxPersist'
 
 /* ------------- Assemble The Reducers ------------- */
 export const reducers = combineReducers({
   nav: require('./NavigationRedux').reducer,
   github: require('./GithubRedux').reducer,
+  wp: WordpressRedux.reducer,
   search: require('./SearchRedux').reducer
 })
 

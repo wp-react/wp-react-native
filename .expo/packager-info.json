@@ -1,5 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null
+  "packagerPort": 19005,
+  "packagerPid": 64574,
+  "expoServerPort": 19004,
+  "expoServerNgrokUrl": "https://4q-3w5.seacloud9.wp-react-native.exp.direct",
+  "packagerNgrokUrl": "https://packager.4q-3w5.seacloud9.wp-react-native.exp.direct",
+  "ngrokPid": 64631
 }

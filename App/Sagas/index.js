@@ -13,6 +13,10 @@ import { GithubTypes } from '../Redux/GithubRedux'
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
 
+import { WordpressSaga, WordpressRedux } from 'wp-react-core'
+const { wpFetchAll, wpFetchSlug, wpFetchPage } = WordpressSaga
+const { WordpressTypes } = WordpressRedux
+
 /* ------------- API ------------- */
 
 // The API we use is only used from Sagas, so we create it here and pass along
@@ -27,6 +31,9 @@ export default function * root () {
     takeLatest(StartupTypes.STARTUP, startup),
 
     // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
+    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
+    takeLatest(WordpressTypes.WP_SLUG_REQUESTED, wpFetchSlug),
+    takeLatest(WordpressTypes.WP_PAGE_REQUESTED, wpFetchPage),
+    takeLatest(WordpressTypes.WP_ALL_REQUESTED, wpFetchAll)
   ])
 }
