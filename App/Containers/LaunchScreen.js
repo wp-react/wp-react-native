@@ -204,8 +204,8 @@ class LaunchScreen extends React.Component {
         }}>
           <Expo.Svg height={200} width={200} viewBox='0 0 512 512'>
             <Expo.Svg.LinearGradient id='grad' x1='0' y1='512' x2='0' y2='0'>
-              <Expo.Svg.Stop offset='0' stopColor='#0CA3D1' stopOpacity='0' />
-              <Expo.Svg.Stop offset='1' stopColor='#bcefff' stopOpacity='1' />
+              <Expo.Svg.Stop offset='0' stopColor='#00349a' stopOpacity='0' />
+              <Expo.Svg.Stop offset='1' stopColor='#0170ca' stopOpacity='1' />
             </Expo.Svg.LinearGradient>
             <Expo.Svg.Path
               clipRule='evenodd'
