@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
-import { ScrollView, View } from 'react-native'
-import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
+import { ScrollView, View, RefreshControl } from 'react-native'
+import WPCard from '../Components/WPCard'
 import { connect } from 'react-redux'
 import { WordpressRedux } from 'wp-react-core'
 import {placeHolder1} from '../Images/base64'
-import HTMLView from 'react-native-htmlview'
+import { Colors } from '../Themes'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 const { WordpressActions } = WordpressRedux
-
+const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
+  const paddingToBottom = 20
+  return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom
+}
 class WordpressHomeScreen extends Component {
   constructor (props) {
     super(props)
-    this.state = props
+    this.state = {...props, refreshing: false, page: 1}
+    this.page = 1
   }
 
   componentWillReceiveProps (newProps) {
@@ -28,40 +32,44 @@ class WordpressHomeScreen extends Component {
       return this.state.posts.map((post, index) => {
         const contentObj = {
           title: post.title.rendered,
+          slug: post.slug,
           link: post.link.replace('http://i-create.org', ''),
           body: post.excerpt.rendered,
+          onPress: () => {
+            this.props.navigation.navigate('WordpressPostScreen', {pageName: post.slug})
+          },
           image: (post.better_featured_image ? post.better_featured_image.media_details.sizes['medium_large'].source_url : placeHolder1)
         }
         return (
-          <Card key={index}>
-            <CardImage source={{uri: `${contentObj.image}`}} />
-            <CardTitle title={`${contentObj.title}`} />
-            <CardContent>
-              <HTMLView value={`${contentObj.body}`} />
-            </CardContent>
-            <CardAction
-              separator
-              inColumn={false}>
-              <CardButton
-                onPress={() => {}}
-                title='Learn More'
-                color='blue'
-      />
-              <CardButton
-                onPress={() => {}}
-                title='Share'
-                color='blue'
-      />
-            </CardAction>
-          </Card>
+          <WPCard btnColor={Colors.linkColor} btnText='Learn More' index={index} image={contentObj.image} title={contentObj.title} body={contentObj.body} onPressLink={contentObj.onPress} />
         )
       })
     }
   }
+
+  _onRefresh = () => {
+    this.setState({page: this.page++}, () => {
+      this.props.wpPageRequested({pageNumber: this.state.page})
+    })
+  }
+
   render () {
     return (
       <View style={styles.mainContainer}>
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container}
+          onScroll={({nativeEvent}) => {
+            if (isCloseToBottom(nativeEvent)) {
+              console.tron.log(' on scroll end fired')
+              this._onRefresh()
+            }
+          }}
+          scrollEventThrottle={400}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh.bind(this)}
+          />
+        }>
           {
                this.getPosts()
             }
