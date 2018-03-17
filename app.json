@@ -2,6 +2,13 @@
   "name": "WpReactNative",
   "displayName": "WpReactNative",
   "expo": {
+    "githubUrl": "https://github.com/wp-react/wp-react-native",
+    "extra": {
+      "API_TIMEOUT": 10000,
+      "API_ROOT": "http://i-create.org/wp-json/wp/v2/",
+      "ROOT":"/",
+      "SITE": "http://i-create.org"
+    },
     "name": "WpReactNative",
     "description": "WordPress React-Native",
     "slug": "WpReactNative",
