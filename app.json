@@ -7,7 +7,18 @@
       "API_TIMEOUT": 10000,
       "API_ROOT": "http://i-create.org/wp-json/wp/v2/",
       "ROOT":"/",
-      "SITE": "http://i-create.org"
+      "SITE": "http://i-create.org",
+      "placeHolder": [
+      "https://seacloud9.github.io/react-material-pwa/Images/placeholder/sc9Img1.jpg",
+      "https://seacloud9.github.io/react-material-pwa/Images/placeholder/sc9Img2.jpg",
+      "https://seacloud9.github.io/react-material-pwa/Images/placeholder/sc9Img3.jpg",
+      "https://seacloud9.github.io/react-material-pwa/Images/placeholder/sc9Img4.jpg",
+      "https://seacloud9.github.io/react-material-pwa/Images/placeholder/sc9Img5.jpg",
+      "https://seacloud9.github.io/react-material-pwa/Images/placeholder/sc9Img6.jpg",
+      "https://seacloud9.github.io/react-material-pwa/Images/placeholder/sc9Img7.jpg",
+      "https://seacloud9.github.io/react-material-pwa/Images/placeholder/sc9Img8.jpg",
+      "https://seacloud9.github.io/react-material-pwa/Images/placeholder/sc9Img9.jpg"
+      ]
     },
     "name": "WpReactNative",
     "description": "WordPress React-Native",

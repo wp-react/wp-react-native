@@ -3,6 +3,7 @@ import { ScrollView, View, RefreshControl } from 'react-native'
 import WPCard from '../Components/WPCard'
 import { connect } from 'react-redux'
 import { WordpressRedux } from 'wp-react-core'
+import { wpContent } from 'wp-react-core'
 import {placeHolder1} from '../Images/base64'
 import { Colors } from '../Themes'
 // Styles
@@ -30,18 +31,14 @@ class WordpressHomeScreen extends Component {
   getPosts () {
     if (this.state.posts.length) {
       return this.state.posts.map((post, index) => {
-        const contentObj = {
-          title: post.title.rendered,
-          slug: post.slug,
-          link: post.link.replace('http://i-create.org', ''),
-          body: post.excerpt.rendered,
-          onPress: () => {
-            this.props.navigation.navigate('WordpressPostScreen', {pageName: post.slug})
-          },
-          image: (post.better_featured_image ? post.better_featured_image.media_details.sizes['medium_large'].source_url : placeHolder1)
+        let contentObj = wpContent(post)
+
+        //contentObj.image = placeHolder1
+        contentObj.onPress = () => {
+          this.props.navigation.navigate('WordpressPostScreen', {pageName: post.slug})
         }
         return (
-          <WPCard btnColor={Colors.linkColor} btnText='Learn More' index={index} image={contentObj.image} title={contentObj.title} body={contentObj.body} onPressLink={contentObj.onPress} />
+          <WPCard btnColor={Colors.linkColor} btnText='Learn More' index={index} image={contentObj.image} title={contentObj.title} body={contentObj.excerpt} onPressLink={contentObj.onPress} />
         )
       })
     }
@@ -59,7 +56,6 @@ class WordpressHomeScreen extends Component {
         <ScrollView style={styles.container}
           onScroll={({nativeEvent}) => {
             if (isCloseToBottom(nativeEvent)) {
-              console.tron.log(' on scroll end fired')
               this._onRefresh()
             }
           }}

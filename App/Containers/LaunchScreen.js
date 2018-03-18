@@ -6,7 +6,6 @@ import ExpoTHREE from 'expo-three'
 import { View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { WordpressRedux } from 'wp-react-core'
-import {placeHolder1} from '../Images/base64'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 const totalClouds = 800
