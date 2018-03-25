@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { ScrollView, View, RefreshControl } from 'react-native'
 import WPCard from '../Components/WPCard'
 import { connect } from 'react-redux'
-import { WordpressRedux } from 'wp-react-core'
-import { wpContent } from 'wp-react-core'
-import {placeHolder1} from '../Images/base64'
+import { WordpressRedux, wpContent } from 'wp-react-core'
+// import {placeHolder1} from '../Images/base64'
 import { Colors } from '../Themes'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
@@ -32,13 +31,11 @@ class WordpressHomeScreen extends Component {
     if (this.state.posts.length) {
       return this.state.posts.map((post, index) => {
         let contentObj = wpContent(post)
-
-        //contentObj.image = placeHolder1
         contentObj.onPress = () => {
           this.props.navigation.navigate('WordpressPostScreen', {pageName: post.slug})
         }
         return (
-          <WPCard btnColor={Colors.linkColor} btnText='Learn More' index={index} image={contentObj.image} title={contentObj.title} body={contentObj.excerpt} onPressLink={contentObj.onPress} />
+          <WPCard postEnabled={false} HTMLView btnColor={Colors.linkColor} btnText='Learn More' index={index} image={contentObj.image} title={contentObj.title} body={contentObj.excerpt} onPressLink={contentObj.onPress} />
         )
       })
     }

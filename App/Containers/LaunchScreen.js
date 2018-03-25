@@ -7,7 +7,7 @@ import { View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { WordpressRedux } from 'wp-react-core'
 // Styles
-import styles from './Styles/LaunchScreenStyles'
+// import styles from './Styles/LaunchScreenStyles'
 const totalClouds = 800
 const { WordpressActions } = WordpressRedux
 

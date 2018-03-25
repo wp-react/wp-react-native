@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { ScrollView, View } from 'react-native'
+import { View, Dimensions } from 'react-native'
 import WPCard from '../Components/WPCard'
 import { connect } from 'react-redux'
 import { WordpressRedux } from 'wp-react-core'
 import {placeHolder1} from '../Images/base64'
-import HTMLView from 'react-native-htmlview'
 import { Colors } from '../Themes'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
@@ -44,11 +43,11 @@ class WordpressPostScreen extends Component {
   render () {
     return (
       <View style={styles.mainContainer}>
-        <ScrollView style={styles.container}>
+        <View style={{flex: 1}}>
           {
                this.getPosts()
             }
-        </ScrollView>
+        </View>
       </View>
     )
   }
